@@ -15,7 +15,7 @@
             android:layout_height="match_parent"
             android:src="@drawable/martha"
             android:scaleType="centerCrop"/>
-        <LinearLayout
+      <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:background="#dfff"
@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:text="Martha Hotel"
                 android:textSize="12pt"/>
-            <LinearLayout
+           <!-- <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
@@ -98,7 +98,7 @@
                     android:text="Salle de Réunion"
                     android:layout_marginLeft="12dp"
                     android:textSize="8pt"/>
-            </LinearLayout>
+            </LinearLayout>-->
 
 
         </LinearLayout>
