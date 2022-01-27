@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#161616"
+    android:padding="24dp"
+    android:elevation="40dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="14dp">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+          <TextView
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:text="Ch Nº" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="5dp"
+                android:text="210" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="10dp"
+                android:text=" est réservéé par :" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="20dp"
+                android:text=" NDUWIMANA Guy-Michel " />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="From : "/>
+            <TextView
+                android:id="@+id/date_checkin"
+                android:layout_height="match_parent"
+                android:textSize="7pt"
+                android:text="07/06/2021"
+                android:layout_width="wrap_content" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="50pt"
+                android:text="To : "/>
+            <TextView
+                android:id="@+id/date_checkout"
+                android:layout_height="match_parent"
+                android:textSize="7pt"
+                android:text="14/06/2021"
+                android:layout_width="wrap_content" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#6A90B5"
+                android:layout_height="wrap_content"
+                android:text="Prix:" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#6A90B5"
+                android:layout_height="wrap_content"
+                android:text=" 250.000 " />
+            <TextView
+                android:layout_width="wrap_content"
+                android:textSize="20dp"
+                android:textColor="#6A90B5"
+                android:layout_height="wrap_content"
+                android:text="Fbu" />
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                    <Button
+                        android:id="@+id/btn_register_cancel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:text="Annuler"
+                        android:textColor="#f00"
+                        android:padding="0dp"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+                        android:layout_alignParentRight="true" />
+                </RelativeLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
