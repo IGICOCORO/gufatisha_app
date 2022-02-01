@@ -12,7 +12,6 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gufatisha_app">
         <activity android:name=".MainActivity"/>
-        <activity android:name=".AuthActivity" android:hardwareAccelerated="true" />
         <activity android:name=".SplashScreenActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
