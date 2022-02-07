@@ -8,7 +8,7 @@
     <fragment
         android:id="@+id/navigation_home"
         android:name="bi.guymichel.gufatisha_app.Fragments.HotelListFragment"
-        android:label="Home"
+        android:label="Accueil"
         tools:layout="@layout/fragment_hotel_list" />
 
     <fragment

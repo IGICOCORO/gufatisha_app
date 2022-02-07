@@ -9,12 +9,13 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 
 import bi.guymichel.gufatisha_app.Fragments.HotelListFragment;
 import bi.guymichel.gufatisha_app.Fragments.ReservationFragment;
+import bi.guymichel.gufatisha_app.Fragments.RoomFragment;
 
 
 public class PageAdapter extends FragmentStatePagerAdapter {
     private Context context;
     Fragment[] fragments = new Fragment[]{
-            new HotelListFragment(), new ReservationFragment()
+            new HotelListFragment(), new ReservationFragment(),new RoomFragment()
     };
 
     public PageAdapter(@NonNull FragmentManager fm,Context context) {
