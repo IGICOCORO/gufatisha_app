@@ -14,4 +14,12 @@ public class Hotel {
                 ", image='" + image + '\'' +
                 '}';
     }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public String getImage() {
+        return image;
+    }
 }

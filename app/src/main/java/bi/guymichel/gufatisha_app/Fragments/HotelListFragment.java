@@ -18,7 +18,7 @@ import bi.guymichel.gufatisha_app.R;
 
 public class HotelListFragment extends Fragment {
     RecyclerView hotellist;
-    private ArrayList<Hotel> hotels;
+    private ArrayList<Hotel> hotels = new ArrayList<>();
     AdapterHome adapter;
 
 
@@ -28,9 +28,13 @@ public class HotelListFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_hotel_list, container, false);
         hotellist = view.findViewById(R.id.hotellist);
-        adapter = new AdapterHome(R.layout.card_hotel_view, getActivity());
+        adapter = new AdapterHome(R.layout.card_hotel_view, getActivity(), hotels);
         hotellist.setAdapter(adapter);
+        getHotels();
         return view;
+    }
+
+    private void getHotels() {
     }
 
 }
