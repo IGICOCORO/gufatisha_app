@@ -68,7 +68,7 @@
                     android:layout_height="wrap_content"
                     android:autofillHints=""
                     android:hint=" Provenance"
-                    android:inputType="number" />
+                    android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
             <RelativeLayout
                 android:layout_width="match_parent"
