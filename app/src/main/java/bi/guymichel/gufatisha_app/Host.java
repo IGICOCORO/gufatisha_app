@@ -24,22 +24,9 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Host {
-    //public static String URL = "http://192.168.1.2:80";
-//    public static String URL = "https://seed.hogi.bi";
-    public static String URL = "http://127.0.0.1:8000";
+    public static String URL = "http://192.168.16.218:8000";
     private static SharedPreferences sessionPreference;
 
-    public static boolean isLogedIn(Context context){
-        sessionPreference = context.getSharedPreferences("user_session", Context.MODE_PRIVATE);
-        String token = sessionPreference.getString("token", "");
-        return !(token.trim().isEmpty());
-    }
-
-    public static String getSessionValue(Context context, String name){
-        sessionPreference = context.getSharedPreferences("user_session", Context.MODE_PRIVATE);
-        String value = sessionPreference.getString(name, "");
-        return value.trim();
-    }
 
     public static void logOut(Activity context){
         sessionPreference = context.getSharedPreferences("user_session", Context.MODE_PRIVATE);
@@ -47,39 +34,5 @@ public class Host {
         session.clear();
         session.apply();
         context.finish();
-    }
-    public static void refreshToken(Context context){
-        String json = "{\"refresh\":\""+getSessionValue(context, "refresh") +"\"}";
-
-        RequestBody body = RequestBody.create(json, MediaType.parse("application/json; charset=utf-8"));
-
-        OkHttpClient client = new OkHttpClient();
-        HttpUrl.Builder urlBuilder = Objects.requireNonNull(HttpUrl.parse(Host.URL + "/refresh/")).newBuilder();
-
-        String url = urlBuilder.build().toString();
-        Request request = new Request.Builder()
-                .url(url)
-                .build();
-        client.newCall(request).enqueue(new Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) {
-                Log.i("==== HOST ====", e.getMessage());
-            }
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                String json = response.body().string();
-                try {
-                    JSONObject jsonObject = new  JSONObject(json);
-                    Log.i("==== NEW TOKEN ====", json);
-                    String token = jsonObject.getString("access");
-                    SharedPreferences.Editor session = sessionPreference.edit();
-                    session.putString("token", token);
-                    session.apply();
-                    Log.i("==== NEW TOKEN ====", token);
-                } catch (Exception e) {
-                    Log.i("==== HOST ====", e.getMessage());
-                }
-            }
-        });
     }
 }
