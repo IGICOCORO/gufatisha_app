@@ -24,7 +24,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class Host {
-    public static String URL = "http://192.168.16.218:8000";
+    public static String URL = "http://192.168.126.218:8000";
     private static SharedPreferences sessionPreference;
 
 

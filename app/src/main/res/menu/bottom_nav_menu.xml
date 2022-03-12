@@ -11,5 +11,4 @@
         android:icon="@drawable/ic_reserve"
         android:title="Resérvations" />
 
-
 </menu>
