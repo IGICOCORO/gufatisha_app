@@ -1,5 +1,6 @@
 package bi.guymichel.gufatisha_app.Fragments;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -67,17 +68,20 @@ public class HotelListFragment extends Fragment {
                     Log.i("=====HOTEL=====",e.getMessage());
                 }
 
+                @SuppressLint("LongLogTag")
                 @Override
                 public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                     String json = response.body().string();
                     try {
                       JSONArray json_array = new JSONObject(json).getJSONArray("results");
                         for (int i=0; i<json_array.length(); i++){
-                            JSONObject json_obj = json_array.getJSONObject(i);;
+                            JSONObject json_obj = json_array.getJSONObject(i);
                             Hotel hotel = new Hotel(
+                                    json_obj.getInt("id"),
                                     json_obj.getString("nom"),
                                     json_obj.getString("photo_couverture")
                             );
+                            Log.i("======IHOTELI======", String.valueOf(hotel.id));
                             for (int j = 0;j<json_obj.getJSONArray("valeurs").length(); j++){
                                 JSONObject jn_obj = json_obj.getJSONArray("valeurs").getJSONObject(j);
                                 Log.i("======RESPONSE=======", String.valueOf(json_obj));

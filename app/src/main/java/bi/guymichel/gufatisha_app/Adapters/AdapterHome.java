@@ -28,7 +28,7 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolder> {
     private ArrayList<Hotel> hotels ;
     private final int layoutId;
 
-    public AdapterHome(int layoutId,Context context,ArrayList<Hotel> hotels) {
+    public AdapterHome(int layoutId, Context context, ArrayList<Hotel> hotels) {
         this.context = context;
         this.hotels = hotels;
         this.layoutId = layoutId;
@@ -48,6 +48,8 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolder> {
         Glide.with(this.context).load(hotel.image).into(holder.card_image);
         holder.card_image.setOnClickListener(v -> {
           Intent intent = new Intent(this.context, RoomActivity.class);
+          intent.putExtra("hotel", hotel.id);
+            Log.i("======IHOTERI=====", String.valueOf(hotel.id));
           this.context.startActivity(intent);
         });
         if(hotel.valeur.contains("wifi")){

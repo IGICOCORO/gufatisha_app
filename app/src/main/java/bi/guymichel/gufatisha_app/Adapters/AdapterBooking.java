@@ -10,17 +10,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import bi.guymichel.gufatisha_app.R;
 
-public class AdapterBook extends RecyclerView.Adapter<AdapterBook.ViewHolder>  {
+public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHolder>  {
     private Context context;
 
-    public AdapterBook(Context context, int layoutId) {
+    public AdapterBooking(Context context, int layoutId) {
         this.context = context;
     }
 
     @Override
-    public AdapterBook.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+    public AdapterBooking.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext()).inflate(R.layout.card_booking, parent, false);
-        return new AdapterBook.ViewHolder(itemView);
+        return new AdapterBooking.ViewHolder(itemView);
     }
 
     @Override

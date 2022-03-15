@@ -40,28 +40,32 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-       /* holder.nom_hotel.setText(hotels.get(position).getNom());
-        Glide.with(this.context).load(hotels.get(position).getImage()).into(holder.card_image); */
+        Room room = rooms.get(position);
+        holder.room_number.setText(room.numero);
+        holder.price_number.setText(room.prix);
+        holder.room_type.setText(room.type_chambre);
+        holder.nbr_person.setText(room.nbres_personnes);
+        Glide.with(this.context).load(room.pic1).into(holder.image_item);
 
     }
 
 
     @Override
     public int getItemCount() {
-        return 10;
+        return rooms.size();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
         View view;
         ImageView image_item;
-        TextView room_number,price_number,room_type_value,nbr_person_value;
+        TextView room_number,price_number,room_type,nbr_person;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image_item = itemView.findViewById(R.id.image_item);
             room_number = itemView.findViewById(R.id.room_number);
             price_number = itemView.findViewById(R.id.price_number);
-            room_type_value = itemView.findViewById(R.id.room_type_value);
-            nbr_person_value = itemView.findViewById(R.id.nbr_person_value);
+            room_type = itemView.findViewById(R.id.room_type);
+            nbr_person = itemView.findViewById(R.id.nbr_person);
             view = itemView;
         }
     }

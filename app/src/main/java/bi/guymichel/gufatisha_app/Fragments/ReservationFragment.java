@@ -11,7 +11,7 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 
-import bi.guymichel.gufatisha_app.Adapters.AdapterBook;
+import bi.guymichel.gufatisha_app.Adapters.AdapterBooking;
 import bi.guymichel.gufatisha_app.Models.Reservation;
 import bi.guymichel.gufatisha_app.R;
 
@@ -19,7 +19,7 @@ import bi.guymichel.gufatisha_app.R;
 public class ReservationFragment extends Fragment {
     RecyclerView orderlist;
     private ArrayList<Reservation> reservations;
-    AdapterBook adapter;
+    AdapterBooking adapter;
 
 
     @Override
@@ -28,7 +28,7 @@ public class ReservationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reservation, container, false);
         orderlist = view.findViewById(R.id.orderlist);
-        adapter = new AdapterBook(getActivity(), R.layout.card_booking);
+        adapter = new AdapterBooking(getActivity(), R.layout.card_booking);
         orderlist.setAdapter(adapter);
         return view;
     }
