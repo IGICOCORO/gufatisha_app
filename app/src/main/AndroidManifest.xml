@@ -1,24 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="bi.guymichel.gufatisha_app">
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:hardwareAccelerated="true"
         android:icon="@drawable/ic_hotel"
         android:label="@string/app_name"
         android:roundIcon="@drawable/ic_hotel"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Gufatisha_app">
-        <activity android:name=".RoomActivity" android:parentActivityName=".MainActivity"/>
+        android:theme="@style/Theme.Gufatisha_app"
+        android:usesCleartextTraffic="true">
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".RoomActivity"
+            android:parentActivityName=".MainActivity" />
         <activity android:name=".MainActivity" />
         <activity
             android:name=".SplashScreenActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
