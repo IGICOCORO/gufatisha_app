@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -31,25 +32,27 @@ public class LoginActivity extends AppCompatActivity {
                phone.requestFocus();
                return;
            } else {
-               saveData("key",phone.getText().toString());
+               saveData("TEL",phone.getText().toString());
                Intent i = new Intent(LoginActivity.this,MainActivity.class);
                startActivity(i);
                finish();
            }
 
         });
+        getData("TEL");
     }
 
     private void saveData(String key, String value) {
-        SharedPreferences sharedPreferences = getSharedPreferences("phoneNum",0);
+        SharedPreferences sharedPreferences = getSharedPreferences("session",0);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString(key, value);
         editor.apply();
     }
     private String getData(String key){
-        SharedPreferences sharedPreferences = getSharedPreferences("phoneNum",0);
+        SharedPreferences sharedPreferences = getSharedPreferences("session",0);
         if (sharedPreferences.contains(key)){
             String data = sharedPreferences.getString(key,null);
+            Log.i("====PHONE NUMBER",data);
             return data;
         }else {
             return null;
