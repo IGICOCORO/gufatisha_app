@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.guymichel.gufatisha_app.Adapters.AdapterRoom;
-import bi.guymichel.gufatisha_app.Models.Hotel;
+import bi.guymichel.gufatisha_app.Dialogs.BookingDialog;
 import bi.guymichel.gufatisha_app.Models.Room;
 import okhttp3.Call;
 import okhttp3.Callback;
