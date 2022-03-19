@@ -65,7 +65,6 @@ public class HotelListFragment extends Fragment {
                     getActivity().runOnUiThread(() -> {
                         Toast.makeText(getActivity(), "Erreur de connexion", Toast.LENGTH_SHORT).show();
                     });
-                    Log.i("=====HOTEL=====",e.getMessage());
                 }
 
                 @SuppressLint("LongLogTag")
@@ -81,10 +80,8 @@ public class HotelListFragment extends Fragment {
                                     json_obj.getString("nom"),
                                     json_obj.getString("photo_couverture")
                             );
-                            Log.i("======IHOTELI======", String.valueOf(hotel.id));
                             for (int j = 0;j<json_obj.getJSONArray("valeurs").length(); j++){
                                 JSONObject jn_obj = json_obj.getJSONArray("valeurs").getJSONObject(j);
-                                Log.i("======RESPONSE=======", String.valueOf(json_obj));
                                hotel.valeur.add(jn_obj.getString("nom_valeur"));
                             }
                             hotels.add(hotel);

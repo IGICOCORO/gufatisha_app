@@ -46,7 +46,7 @@ public class ReservationFragment extends Fragment {
         orderlist = view.findViewById(R.id.orderlist);
         adapter = new AdapterBooking(R.layout.card_booking,getContext() ,reservations);
         orderlist.setAdapter(adapter);
-        getOrders();
+       getOrders();
         return view;
     }
 
@@ -77,13 +77,17 @@ public class ReservationFragment extends Fragment {
                     JSONArray json_array = new JSONObject(json).getJSONArray("results");
                     for (int i=0; i<json_array.length(); i++){
                         JSONObject json_obj = json_array.getJSONObject(i);
+                        JSONObject json_obj_client = json_obj.getJSONObject("client");
+                        JSONObject json_object_chambre = json_obj.getJSONObject("chambre");
                         Reservation reservation = new Reservation(
+                                json_object_chambre.getString("numero"),
+                                json_obj_client.getString("nom") + json_obj_client.getString("prenom") ,
                                 json_obj.getString("date_arrivee"),
                                 json_obj.getString("date_depart"),
-                                json_obj.getString("client"),
-                                json_obj.getString("chambre"),
-                                json_obj.getString("prix")
+                                json_object_chambre.getString("prix")
                         );
+
+                        Log.i("====JSON=======", String.valueOf(json_obj));
                         reservations.add(reservation);
                     }
                 } catch (JSONException e) {

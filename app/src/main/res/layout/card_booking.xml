@@ -22,7 +22,7 @@
               android:layout_height="wrap_content"
               android:text="Ch Nº." />
             <TextView
-                android:id="@+id/ch_number"
+                android:id="@+id/chambre_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="2dp"

@@ -6,7 +6,7 @@ import android.content.SharedPreferences;
 
 
 public class Host {
-    public static String URL = "http://192.168.32.218:8000";
+    public static String URL = "http://192.168.158.218:8000";
     private static SharedPreferences sessionPreference;
 
 

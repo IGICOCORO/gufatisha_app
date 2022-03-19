@@ -3,9 +3,14 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_login.xml" value="0.265625" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_main.xml" value="0.12917933130699089" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_room.xml" value="0.13145896656534956" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_booking.xml" value="0.18" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_hotel_view.xml" value="0.13145896656534956" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_room.xml" value="0.33" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/dialog_register.xml" value="0.13145896656534956" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/fragment_reservation.xml" value="0.12917933130699089" />
       </map>
     </option>
   </component>

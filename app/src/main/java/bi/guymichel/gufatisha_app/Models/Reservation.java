@@ -1,14 +1,14 @@
 package bi.guymichel.gufatisha_app.Models;
 
 public class Reservation {
-    public String date_arrivee,date_depart,client,chambre,prix;
+    public String date_arrivee,date_depart,client,prix_chambre, numero_chambre;
 
-    public Reservation(String date_arrivee, String date_depart, String client, String chambre,String prix) {
+    public Reservation( String numero_chambre,String client,String date_arrivee, String date_depart,String prix_chambre) {
         this.date_arrivee = date_arrivee;
         this.date_depart = date_depart;
         this.client = client;
-        this.chambre = chambre;
-        this.prix = prix;
+        this.numero_chambre = numero_chambre;
+        this.prix_chambre = prix_chambre;
     }
 
     public String getDate_arrivee() {
@@ -23,11 +23,11 @@ public class Reservation {
         return client;
     }
 
-    public String getChambre() {
-        return chambre;
+    public String getPrix_chambre() {
+        return prix_chambre;
     }
 
-    public String getPrix() {
-        return prix;
+    public String getNumero_chambre() {
+        return numero_chambre;
     }
 }
