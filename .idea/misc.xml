@@ -3,14 +3,22 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/drawable/ic_user.xml" value="0.1925" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/drawable/ic_wifi.xml" value="0.1925" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_login.xml" value="0.265625" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_main.xml" value="0.12917933130699089" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_room.xml" value="0.13145896656534956" />
-        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_booking.xml" value="0.18" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/activity_splash_screen.xml" value="0.15172101449275363" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_booking.xml" value="0.25" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_hotel_view.xml" value="0.13145896656534956" />
         <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/card_room.xml" value="0.33" />
-        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/dialog_register.xml" value="0.13145896656534956" />
-        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/fragment_reservation.xml" value="0.12917933130699089" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/dialog_register.xml" value="0.33" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/fragment_blank.xml" value="0.5" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/fragment_gedeo.xml" value="0.265625" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/fragment_hotel_list.xml" value="0.15172101449275363" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/fragment_reservation.xml" value="0.33" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/layout/ghcgh.xml" value="0.265625" />
+        <entry key="..\:/Users/Guy-Michel/AndroidStudioProjects/gufatisha_app/app/src/main/res/menu/bottom_nav_menu.xml" value="0.265625" />
       </map>
     </option>
   </component>

@@ -45,7 +45,7 @@
                 android:id="@+id/date_checkin_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="From : "/>
+                android:text="Du : " />
             <TextView
                 android:id="@+id/date_checkin"
                 android:layout_height="match_parent"
@@ -57,7 +57,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="50pt"
-                android:text="To : "/>
+                android:text="Au : "/>
             <TextView
                 android:id="@+id/date_checkout"
                 android:layout_height="match_parent"

@@ -72,7 +72,7 @@ public class ReservationFragment extends Fragment {
             @Override
             public void onResponse(@NotNull Call call, @NotNull Response response) throws IOException {
                 String json = response.body().string();
-                Log.i("====JSON=======", json);
+                Log.i("====JSONReservation=======", json);
                 try {
                     JSONArray json_array = new JSONObject(json).getJSONArray("results");
                     for (int i=0; i<json_array.length(); i++){
