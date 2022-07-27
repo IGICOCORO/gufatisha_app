@@ -21,6 +21,7 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tablayout"
             android:layout_width="match_parent"
+            app:tabTextColor="@color/black"
             android:layout_height="60dp"
             app:tabIndicatorHeight="4dp"
             app:tabIndicatorGravity="top">
