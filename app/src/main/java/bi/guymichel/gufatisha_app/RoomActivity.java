@@ -7,7 +7,10 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
+
+import com.bumptech.glide.Glide;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -32,6 +35,7 @@ public class RoomActivity extends AppCompatActivity {
     Button btn_booking;
     private ArrayList<Room> rooms = new ArrayList<>();
     private  int hotel_id ;
+    private ImageView image_room;
 
 
     @Override
@@ -42,6 +46,7 @@ public class RoomActivity extends AppCompatActivity {
         adapter = new AdapterRoom(R.layout.card_room, this, rooms);
         roomlist.setAdapter(adapter);
         btn_booking = findViewById(R.id.btn_booking);
+        image_room = findViewById(R.id.image_room);
         btn_booking.setOnClickListener(v -> openDialog());
         hotel_id = getIntent().getIntExtra("hotel",-1);
         extractrooms();
@@ -103,5 +108,9 @@ public class RoomActivity extends AppCompatActivity {
             }
         });
 
+    }
+
+    public void setImage(String pic1) {
+        Glide.with(this).load(pic1).into(image_room);
     }
 }

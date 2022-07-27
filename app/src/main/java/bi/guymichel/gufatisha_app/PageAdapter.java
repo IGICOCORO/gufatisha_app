@@ -17,7 +17,7 @@ public class PageAdapter extends FragmentStatePagerAdapter {
             new HotelListFragment(), new ReservationFragment()
     };
 
-    public PageAdapter(@NonNull FragmentManager fm,Context context) {
+    public PageAdapter(@NonNull FragmentManager fm, int i, Context context) {
         super(fm);
         this.context = context;
     }

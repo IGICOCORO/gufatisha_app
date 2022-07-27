@@ -16,16 +16,17 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 import bi.guymichel.gufatisha_app.Models.Room;
 import bi.guymichel.gufatisha_app.R;
+import bi.guymichel.gufatisha_app.RoomActivity;
 
 
 public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
-    private Context context;
+    private RoomActivity context;
     private final int layoutId;
     private ArrayList<Room> rooms ;
 
 
 
-    public AdapterRoom(int layoutId,Context context,ArrayList<Room> rooms) {
+    public AdapterRoom(int layoutId,RoomActivity context,ArrayList<Room> rooms) {
         this.context = context;
         this.layoutId = layoutId;
         this.rooms = rooms;
@@ -46,7 +47,9 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
         holder.room_type.setText(room.type_chambre);
         holder.nbr_person.setText(room.nbres_personnes);
         Glide.with(this.context).load(room.pic1).into(holder.image_item);
-
+        holder.view.setOnClickListener(v ->{
+            context.setImage(room.pic1);
+        });
     }
 
 
