@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         tablayout.setupWithViewPager(viewpager);
         viewpager.setAdapter(main_fspa);
         viewpager.setOffscreenPageLimit(3);
-        tablayout.getTabAt(0).setIcon(R.drawable.ic_home);
-        tablayout.getTabAt(1).setIcon(R.drawable.ic_hotel);
+        tablayout.getTabAt(0).setIcon(R.drawable.ic_home).setText("Home");
+        tablayout.getTabAt(1).setIcon(R.drawable.ic_hotel).setText("Réservation");
     }
 }

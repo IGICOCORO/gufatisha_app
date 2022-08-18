@@ -54,7 +54,7 @@ public class RoomActivity extends AppCompatActivity {
     }
 
     private void openDialog() {
-        BookingDialog bookingDialog = new BookingDialog();
+        BookingDialog bookingDialog = new BookingDialog(this);
         bookingDialog.show(getSupportFragmentManager(),"booking");
 
 
