@@ -21,7 +21,6 @@ import java.util.Calendar;
 public class ReservationDialog extends AppCompatDialogFragment {
     TextView date_de_debut ;
     TextView date_de_sortie;
-    Context context;
     final Calendar myCalendar= Calendar.getInstance();
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState,Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
