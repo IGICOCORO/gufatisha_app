@@ -27,6 +27,17 @@ public class Reservation {
         return prix_chambre;
     }
 
+    @Override
+    public String toString() {
+        return "Reservation{" +
+                "date_arrivee='" + date_arrivee + '\'' +
+                ", date_depart='" + date_depart + '\'' +
+                ", client='" + client + '\'' +
+                ", prix_chambre='" + prix_chambre + '\'' +
+                ", numero_chambre='" + numero_chambre + '\'' +
+                '}';
+    }
+
     public String getNumero_chambre() {
         return numero_chambre;
     }

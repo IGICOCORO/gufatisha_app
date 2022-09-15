@@ -13,4 +13,13 @@ public class Hotel {
         this.id = id;
     }
 
+    @Override
+    public String toString() {
+        return "Hotel{" +
+                "id=" + id +
+                ", nom_hotel='" + nom_hotel + '\'' +
+                ", image='" + image + '\'' +
+                ", valeur=" + valeur +
+                '}';
+    }
 }
