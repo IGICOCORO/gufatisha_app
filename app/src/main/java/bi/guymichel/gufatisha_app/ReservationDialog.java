@@ -17,15 +17,15 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 import java.util.Calendar;
 
 public class ReservationDialog extends AppCompatDialogFragment {
-    TextView date_de_debut ;
-    TextView date_de_sortie;
+    TextView txt_value_date_debut ;
+    TextView txt_value_date_fin;
     final Calendar myCalendar= Calendar.getInstance();
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState,Context context) {
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.dialog_register,null);
-        date_de_debut = view.findViewById(R.id.date_dEntree);
-        date_de_sortie = view.findViewById(R.id.date_de_sortie);
+        txt_value_date_debut = view.findViewById(R.id.txt_value_date_debut);
+        txt_value_date_fin = view.findViewById(R.id.txt_value_date_fin);
 
         DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -39,11 +39,11 @@ public class ReservationDialog extends AppCompatDialogFragment {
             private void updateLabel() {
             }
         };
-        date_de_debut.setOnClickListener(v -> {
+        txt_value_date_debut.setOnClickListener(v -> {
             new DatePickerDialog(context,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             Log.i("===DEBUT TAPPED====", "onCreateDialog: ");
         });
-        date_de_sortie.setOnClickListener(v ->{
+        txt_value_date_fin.setOnClickListener(v ->{
             new DatePickerDialog(context,date,myCalendar.get(Calendar.YEAR),myCalendar.get(Calendar.MONTH),myCalendar.get(Calendar.DAY_OF_MONTH)).show();
             Log.i("===FIN TAPPED====", "onCreateDialog: ");
         });
