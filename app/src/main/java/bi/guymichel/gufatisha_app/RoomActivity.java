@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -32,10 +34,11 @@ import okhttp3.Response;
 public class RoomActivity extends AppCompatActivity {
     RecyclerView roomlist;
     AdapterRoom adapter;
-    Button btn_booking;
+    ImageButton btn_booking;
     private ArrayList<Room> rooms = new ArrayList<>();
-    private  int hotel_id ;
+    private int hotel_id ;
     private ImageView image_room;
+    private Room room;
 
 
     @Override
@@ -54,10 +57,8 @@ public class RoomActivity extends AppCompatActivity {
     }
 
     private void openDialog() {
-        BookingDialog bookingDialog = new BookingDialog(this);
+        BookingDialog bookingDialog = new BookingDialog(this, room);
         bookingDialog.show(getSupportFragmentManager(),"booking");
-
-
     }
 
     private void extractrooms() {
@@ -110,7 +111,11 @@ public class RoomActivity extends AppCompatActivity {
 
     }
 
-    public void setImage(String pic1) {
-        Glide.with(this).load(pic1).into(image_room);
+    public void setRoom(Room room) {
+        this.room = room;
+        if(this.room != null){
+            this.btn_booking.setVisibility(View.VISIBLE);
+        }
+        Glide.with(this).load(room.pic1).into(image_room);
     }
 }

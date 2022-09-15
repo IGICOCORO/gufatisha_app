@@ -97,7 +97,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
                     <EditText
-                        android:id="@+id/field_username"
+                        android:id="@+id/field_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:focusedByDefault="true"

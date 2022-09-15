@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -18,18 +19,22 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 import java.util.Calendar;
 
+import bi.guymichel.gufatisha_app.Models.Room;
 import bi.guymichel.gufatisha_app.R;
 import bi.guymichel.gufatisha_app.RoomActivity;
 
 public class BookingDialog extends AppCompatDialogFragment {
+    private final Room room;
     TextView txt_value_date_debut ;
     TextView txt_value_date_fin;
+    EditText field_firstname, field_lastname, field_email, field_phone, field_provenance;
     Context context;
     final Calendar calendar_debut= Calendar.getInstance();
     final Calendar calendar_fin= Calendar.getInstance();
 
-    public BookingDialog(RoomActivity roomActivity) {
+    public BookingDialog(RoomActivity roomActivity, Room room) {
         this.context = roomActivity;
+        this.room = room;
     }
 
     @NonNull
@@ -40,6 +45,12 @@ public class BookingDialog extends AppCompatDialogFragment {
         View view = inflater.inflate(R.layout.dialog_register,null);
         txt_value_date_debut = view.findViewById(R.id.txt_value_date_debut);
         txt_value_date_fin = view.findViewById(R.id.txt_value_date_fin);
+
+        field_firstname = view.findViewById(R.id.field_firstname);
+        field_lastname = view.findViewById(R.id.field_lastname);
+        field_email = view.findViewById(R.id.field_email);
+        field_phone = view.findViewById(R.id.field_phone);
+        field_provenance = view.findViewById(R.id.field_provenance);
 
         DatePickerDialog.OnDateSetListener date_debut =new DatePickerDialog.OnDateSetListener() {
             @Override

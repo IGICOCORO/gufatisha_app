@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -12,13 +12,6 @@
         android:layout_height="wrap_content"
         android:src="@drawable/room"
         android:scaleType="centerCrop"/>
-    <Button
-        android:id="@+id/btn_booking"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:text="Book Now"
-        android:textColor="@color/white"
-        android:background="@drawable/material_button"/>
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -32,5 +25,14 @@
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/card_room" />
     </ScrollView>
-
-</FrameLayout>
+    <ImageButton
+        android:id="@+id/btn_booking"
+        android:visibility="gone"
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:layout_margin="20dp"
+        android:src="@drawable/ic_reserve_white"
+        android:background="@drawable/material_button"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"/>
+</RelativeLayout>

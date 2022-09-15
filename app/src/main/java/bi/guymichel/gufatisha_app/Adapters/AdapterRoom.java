@@ -48,7 +48,7 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
         holder.nbr_person.setText(room.nbres_personnes);
         Glide.with(this.context).load(room.pic1).into(holder.image_item);
         holder.view.setOnClickListener(v ->{
-            context.setImage(room.pic1);
+            context.setRoom(room);
         });
     }
 
