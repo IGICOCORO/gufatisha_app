@@ -133,21 +133,23 @@
                     <Button
                         android:id="@+id/btn_register_cancel"
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
+                        android:layout_height="28dp"
                         android:text="Cancel"
                         android:textColor="#f00"
                         android:padding="0dp"
                         style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+
                     <Button
                         android:id="@+id/btn_register_submit"
                         android:layout_width="wrap_content"
-                        android:layout_height="36dp"
-                        android:layout_marginBottom="10dp"
+                        android:layout_height="28dp"
+                        android:layout_alignParentEnd="true"
                         android:layout_alignParentRight="true"
+                        android:layout_marginBottom="10dp"
                         android:background="@drawable/material_button"
+                        android:padding="0dp"
                         android:text="Submit"
-                        android:textColor="@color/white"
-                        android:layout_alignParentEnd="true" />
+                        android:textColor="@color/white" />
                 </RelativeLayout>
 
             </LinearLayout>

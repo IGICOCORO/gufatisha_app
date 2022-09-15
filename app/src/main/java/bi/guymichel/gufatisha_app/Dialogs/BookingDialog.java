@@ -1,5 +1,6 @@
 package bi.guymichel.gufatisha_app.Dialogs;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.Dialog;
@@ -9,26 +10,42 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatDialogFragment;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
 import java.util.Calendar;
 
+import bi.guymichel.gufatisha_app.Host;
 import bi.guymichel.gufatisha_app.Models.Room;
 import bi.guymichel.gufatisha_app.R;
 import bi.guymichel.gufatisha_app.RoomActivity;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.HttpUrl;
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class BookingDialog extends AppCompatDialogFragment {
     private final Room room;
     TextView txt_value_date_debut ;
     TextView txt_value_date_fin;
     EditText field_firstname, field_lastname, field_email, field_phone, field_provenance;
-    Context context;
+    Activity context;
+    Button btn_register_submit;
     final Calendar calendar_debut= Calendar.getInstance();
     final Calendar calendar_fin= Calendar.getInstance();
 
@@ -51,6 +68,11 @@ public class BookingDialog extends AppCompatDialogFragment {
         field_email = view.findViewById(R.id.field_email);
         field_phone = view.findViewById(R.id.field_phone);
         field_provenance = view.findViewById(R.id.field_provenance);
+
+        btn_register_submit = view.findViewById(R.id.btn_register_submit);
+        btn_register_submit.setOnClickListener(button -> {
+            this.registerReservation();
+        });
 
         DatePickerDialog.OnDateSetListener date_debut =new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -93,6 +115,71 @@ public class BookingDialog extends AppCompatDialogFragment {
         });
         builder.setView(view);
         return builder.create();
+    }
+
+    private void registerReservation() {
+        String date_debut = calendar_debut.get(Calendar.YEAR)+"-"
+                + calendar_debut.get(Calendar.MONTH)+"-"
+                + calendar_debut.get(Calendar.DAY_OF_MONTH);
+        String date_fin = calendar_fin.get(Calendar.YEAR)+"-"
+                + calendar_fin.get(Calendar.MONTH)+"-"
+                + calendar_fin.get(Calendar.DAY_OF_MONTH);
+        String firstname = field_firstname.getText().toString();
+        String lastname = field_lastname.getText().toString();
+        String email = field_email.getText().toString();
+        String phone = field_phone.getText().toString();
+        String provenance = field_provenance.getText().toString();
+
+        String json_reservation = "\"{"+
+            "\"client\": {"+
+                    "\"nom\": \""+firstname+"\","
+                    + "\"prenom\": \""+lastname+"\","
+                    + "\"provenance\": \""+provenance+"\","
+                    + "\"phone\": \""+"\""+phone+"\","
+                    + "\"email\": \""+email+"\","
+            +"},"
+            +"\"date_arrivee\": \""+date_debut+"\","
+            +"\"date_depart\": \""+date_fin+"\","
+            +"\"chambre\": \""+room.numero.toString()+"\""
+        +"}";
+        RequestBody body = RequestBody.create(json_reservation, MediaType.parse("application/json; charset=utf-8"));
+
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/Reservation/").newBuilder();
+
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder()
+                .url(url)
+//                .header("Authorization", "Token "+context.token)
+                .patch(body)
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                context.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                try {
+                    JSONObject json_obj = new JSONObject(json);
+                    BookingDialog.this.dismiss();
+                } catch (JSONException e) {
+                    context.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(context, "Ajout échouée", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                }
+            }
+        });
     }
 
     private void updateLabel() {
