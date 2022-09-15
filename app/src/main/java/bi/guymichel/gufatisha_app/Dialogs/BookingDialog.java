@@ -25,12 +25,12 @@ public class BookingDialog extends AppCompatDialogFragment {
     TextView txt_value_date_debut ;
     TextView txt_value_date_fin;
     Context context;
-    final Calendar myCalendar= Calendar.getInstance();
+    final Calendar calendar_debut= Calendar.getInstance();
+    final Calendar calendar_fin= Calendar.getInstance();
 
     public BookingDialog(RoomActivity roomActivity) {
         this.context = roomActivity;
     }
-
 
     @NonNull
     @Override
@@ -41,39 +41,59 @@ public class BookingDialog extends AppCompatDialogFragment {
         txt_value_date_debut = view.findViewById(R.id.txt_value_date_debut);
         txt_value_date_fin = view.findViewById(R.id.txt_value_date_fin);
 
-        DatePickerDialog.OnDateSetListener date =new DatePickerDialog.OnDateSetListener() {
+        DatePickerDialog.OnDateSetListener date_debut =new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int day) {
-                myCalendar.set(Calendar.YEAR, year);
-                myCalendar.set(Calendar.MONTH,month);
-                myCalendar.set(Calendar.DAY_OF_MONTH,day);
+                calendar_debut.set(Calendar.YEAR, year);
+                calendar_debut.set(Calendar.MONTH,month);
+                calendar_debut.set(Calendar.DAY_OF_MONTH,day);
                 updateLabel();
             }
+        };
 
-            private void updateLabel() {
+        DatePickerDialog.OnDateSetListener date_fin =new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int day) {
+                calendar_fin.set(Calendar.YEAR, year);
+                calendar_fin.set(Calendar.MONTH,month);
+                calendar_fin.set(Calendar.DAY_OF_MONTH,day);
+                updateLabel();
             }
         };
         txt_value_date_debut.setOnClickListener(v -> {
             new DatePickerDialog(
                     context,
-                    date,
-                    myCalendar.get(Calendar.YEAR),
-                    myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)
+                    date_debut,
+                    calendar_debut.get(Calendar.YEAR),
+                    calendar_debut.get(Calendar.MONTH),
+                    calendar_debut.get(Calendar.DAY_OF_MONTH)
             ).show();
             Log.i("===DEBUT TAPPED====", "onCreateDialog: ");
         });
         txt_value_date_fin.setOnClickListener(v ->{
             new DatePickerDialog(
                     context,
-                    date,
-                    myCalendar.get(Calendar.YEAR),
-                    myCalendar.get(Calendar.MONTH),
-                    myCalendar.get(Calendar.DAY_OF_MONTH)
+                    date_fin,
+                    calendar_fin.get(Calendar.YEAR),
+                    calendar_fin.get(Calendar.MONTH),
+                    calendar_fin.get(Calendar.DAY_OF_MONTH)
             ).show();
             Log.i("===FIN TAPPED====", "onCreateDialog: ");
         });
         builder.setView(view);
         return builder.create();
+    }
+
+    private void updateLabel() {
+        String date_debut = calendar_debut.get(Calendar.DAY_OF_MONTH)+"/"
+                +calendar_debut.get(Calendar.MONTH)+"/"+
+                calendar_debut.get(Calendar.YEAR);
+
+        String date_fin = calendar_fin.get(Calendar.DAY_OF_MONTH)+"/"
+                +calendar_fin.get(Calendar.MONTH)+"/"+
+                calendar_fin.get(Calendar.YEAR);
+
+        this.txt_value_date_debut.setText(date_debut);
+        this.txt_value_date_fin.setText(date_fin);
     }
 }
