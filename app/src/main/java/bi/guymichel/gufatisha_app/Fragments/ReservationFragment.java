@@ -44,7 +44,7 @@ public class ReservationFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reservation, container, false);
         orderlist = view.findViewById(R.id.orderlist);
-        adapter = new AdapterBooking(R.layout.card_booking,getContext() ,reservations);
+        adapter = new AdapterBooking(R.layout.card_booking, this ,reservations);
         orderlist.setAdapter(adapter);
        getOrders();
         return view;
@@ -96,5 +96,10 @@ public class ReservationFragment extends Fragment {
 
             }
         });
+    }
+
+    public void deleteReservation(int position) {
+        reservations.remove(position);
+        adapter.notifyItemRemoved(position);
     }
 }

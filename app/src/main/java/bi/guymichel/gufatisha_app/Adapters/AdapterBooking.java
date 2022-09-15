@@ -8,23 +8,25 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import bi.guymichel.gufatisha_app.Fragments.ReservationFragment;
 import bi.guymichel.gufatisha_app.Models.Reservation;
 import bi.guymichel.gufatisha_app.R;
 
 
 public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHolder> {
-    private Context context;
+    private ReservationFragment fragment;
     private final int layoutId;
     private ArrayList<Reservation> reservations ;
 
 
 
-    public AdapterBooking(int layoutId,Context context,ArrayList<Reservation> reservations) {
-        this.context = context;
+    public AdapterBooking(int layoutId, ReservationFragment fragment,ArrayList<Reservation> reservations) {
+        this.fragment = fragment;
         this.layoutId = layoutId;
         this.reservations = reservations;
     }
@@ -44,7 +46,9 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
         holder.date_checkin.setText(reservation.date_arrivee);
         holder.date_checkout.setText(reservation.date_depart);
         holder.price_chambre.setText(reservation.prix_chambre);
-
+        holder.view.setOnClickListener(view -> {
+            fragment.deleteReservation(position);
+        });
     }
 
 

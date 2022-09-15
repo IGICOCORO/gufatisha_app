@@ -130,14 +130,15 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
+
                     <Button
                         android:id="@+id/btn_register_cancel"
+                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
                         android:layout_width="wrap_content"
                         android:layout_height="28dp"
-                        android:text="Cancel"
-                        android:textColor="#f00"
                         android:padding="0dp"
-                        style="@style/Widget.AppCompat.Button.Borderless.Colored"/>
+                        android:text="Cancel"
+                        android:textColor="#f00" />
 
                     <Button
                         android:id="@+id/btn_register_submit"
