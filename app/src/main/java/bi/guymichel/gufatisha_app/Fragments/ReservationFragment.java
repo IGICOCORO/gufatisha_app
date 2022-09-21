@@ -110,7 +110,7 @@ public class ReservationFragment extends Fragment {
         adapter.setReservations(reservations);
     }
 
-    public void delete(int position) {
+    private void delete(int position) {
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/Reservation/"+reservation.id+"/").newBuilder();
 

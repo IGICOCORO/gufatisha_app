@@ -178,6 +178,7 @@ public class BookingDialog extends AppCompatDialogFragment {
                 try {
                     JSONObject json_obj = new JSONObject(json);
                     final Reservation res = new Reservation(
+                            json_obj.getString("id"),
                             json_obj.getString("date_arrivee"),
                             json_obj.getString("date_depart"),
                             json_obj.getString("client"),
