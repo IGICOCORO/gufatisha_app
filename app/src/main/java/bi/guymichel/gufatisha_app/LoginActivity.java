@@ -6,14 +6,10 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputEditText;
-
-import bi.guymichel.gufatisha_app.Dialogs.Dialog_login;
 
 public class LoginActivity extends AppCompatActivity {
     private TextInputEditText phone;
@@ -28,7 +24,7 @@ public class LoginActivity extends AppCompatActivity {
         btn_login.setOnClickListener(v -> {
            if (phone.getText().toString().isEmpty()){
                Toast.makeText(LoginActivity.this,"Please enter Data",Toast.LENGTH_SHORT);
-               phone.setError("please input");
+               phone.setError("Please input");
                phone.requestFocus();
                return;
            } else {
@@ -52,7 +48,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = getSharedPreferences("session",0);
         if (sharedPreferences.contains(key)){
             String data = sharedPreferences.getString(key,null);
-            Log.i("====PHONE NUMBER",data);
+            Log.i("====PHONE NUMBER====",data);
             return data;
         }else {
             return null;
