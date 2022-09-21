@@ -1,19 +1,18 @@
 package bi.guymichel.gufatisha_app.Adapters;
 
 
-import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
-import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
 import bi.guymichel.gufatisha_app.Fragments.ReservationFragment;
+import bi.guymichel.gufatisha_app.Host;
 import bi.guymichel.gufatisha_app.Models.Reservation;
 import bi.guymichel.gufatisha_app.R;
 
@@ -43,11 +42,11 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
         Reservation reservation = reservations.get(position);
         holder.chambre_number.setText(reservation.numero_chambre);
         holder.nom_client.setText(reservation.client);
-        holder.date_checkin.setText(reservation.date_arrivee);
-        holder.date_checkout.setText(reservation.date_depart);
+        holder.date_checkin.setText(Host.getStrDate(reservation.date_arrivee));
+        holder.date_checkout.setText(Host.getStrDate(reservation.date_depart));
         holder.price_chambre.setText(reservation.prix_chambre);
         holder.view.setOnClickListener(view -> {
-            fragment.deleteReservation(position);
+            fragment.delete(position);
         });
     }
 
@@ -55,6 +54,10 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
     @Override
     public int getItemCount() {
         return reservations.size();
+    }
+    public void setReservations(ArrayList<Reservation> reservations) {
+        this.reservations = reservations;
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
