@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
 
 import org.jetbrains.annotations.NotNull;
@@ -21,6 +22,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import bi.guymichel.gufatisha_app.Adapters.AdapterBooking;
+import bi.guymichel.gufatisha_app.Dialogs.BookingDialog;
 import bi.guymichel.gufatisha_app.Host;
 import bi.guymichel.gufatisha_app.Models.Reservation;
 import bi.guymichel.gufatisha_app.R;
@@ -33,9 +35,11 @@ import okhttp3.Response;
 
 
 public class ReservationFragment extends Fragment {
+    private static ArrayList<Reservation> reservations;
+    private static AdapterBooking adapter;
     RecyclerView orderlist;
-    private ArrayList<Reservation> reservations = new ArrayList<>();
-    AdapterBooking adapter;
+    Button btn_order_cancel;
+    private Reservation reservation;
 
 
     @Override
@@ -49,6 +53,8 @@ public class ReservationFragment extends Fragment {
        getOrders();
         return view;
     }
+
+
 
     private void getOrders() {
         OkHttpClient client = new OkHttpClient();
@@ -79,6 +85,7 @@ public class ReservationFragment extends Fragment {
                         JSONObject json_obj_client = json_obj.getJSONObject("client");
                         JSONObject json_object_chambre = json_obj.getJSONObject("chambre");
                         Reservation reservation = new Reservation(
+                                json_object_chambre.getString("id"),
                                 json_object_chambre.getString("numero"),
                                 json_obj_client.getString("nom") + json_obj_client.getString("prenom") ,
                                 json_obj.getString("date_arrivee"),
@@ -91,15 +98,59 @@ public class ReservationFragment extends Fragment {
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
-                    //Toast.makeText(getActivity(),"Une exception de chargement",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(),"Une exception de chargement",Toast.LENGTH_SHORT).show();
                 }
 
             }
         });
     }
 
-    public void deleteReservation(int position) {
-        reservations.remove(position);
-        adapter.notifyItemRemoved(position);
+    public static void pushReservation(Reservation res) {
+        reservations.add(res);
+        adapter.setReservations(reservations);
+    }
+
+    public void delete(int position) {
+        OkHttpClient client = new OkHttpClient();
+        HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/Reservation/"+reservation.id+"/").newBuilder();
+
+        String url = urlBuilder.build().toString();
+        Request request = new Request.Builder()
+                .url(url)
+                //.header("Authorization", "Token "+context.token)
+                .delete()
+                .build();
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, final IOException e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String json = response.body().string();
+                if (!json.trim().isEmpty()){
+                    getActivity().runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getActivity(), "Suppression échouée", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                    return;
+                }
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        reservations.remove(position);
+                        adapter.notifyItemRemoved(position);
+                    }
+                });
+            }
+        });
     }
 }
