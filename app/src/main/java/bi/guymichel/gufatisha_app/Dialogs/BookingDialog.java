@@ -26,7 +26,9 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.Calendar;
 
+import bi.guymichel.gufatisha_app.Fragments.ReservationFragment;
 import bi.guymichel.gufatisha_app.Host;
+import bi.guymichel.gufatisha_app.Models.Reservation;
 import bi.guymichel.gufatisha_app.Models.Room;
 import bi.guymichel.gufatisha_app.R;
 import bi.guymichel.gufatisha_app.RoomActivity;
@@ -44,8 +46,9 @@ public class BookingDialog extends AppCompatDialogFragment {
     TextView txt_value_date_debut ;
     TextView txt_value_date_fin;
     EditText field_firstname, field_lastname, field_email, field_phone, field_provenance;
-    Activity context;
+    RoomActivity context;
     Button btn_register_submit;
+    Button btn_register_cancel;
     final Calendar calendar_debut= Calendar.getInstance();
     final Calendar calendar_fin= Calendar.getInstance();
 
@@ -73,6 +76,11 @@ public class BookingDialog extends AppCompatDialogFragment {
         btn_register_submit.setOnClickListener(button -> {
             this.registerReservation();
         });
+        btn_register_cancel = view.findViewById(R.id.btn_register_cancel);
+        btn_register_cancel.setOnClickListener(button -> {
+            BookingDialog.this.dismiss();
+        });
+
 
         DatePickerDialog.OnDateSetListener date_debut =new DatePickerDialog.OnDateSetListener() {
             @Override
@@ -151,7 +159,7 @@ public class BookingDialog extends AppCompatDialogFragment {
         Request request = new Request.Builder()
                 .url(url)
 //                .header("Authorization", "Token "+context.token)
-                .patch(body)
+                .post(body)
                 .build();
         client.newCall(request).enqueue(new Callback() {
             @Override
@@ -169,6 +177,19 @@ public class BookingDialog extends AppCompatDialogFragment {
                 String json = response.body().string();
                 try {
                     JSONObject json_obj = new JSONObject(json);
+                    final Reservation res = new Reservation(
+                            json_obj.getString("date_arrivee"),
+                            json_obj.getString("date_depart"),
+                            json_obj.getString("client"),
+                            json_obj.getString("prix_chambre"),
+                            json_obj.getString("numero_chambre")
+                    );
+                    context.runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            ReservationFragment.pushReservation(res);
+                        }
+                    });
                     BookingDialog.this.dismiss();
                 } catch (JSONException e) {
                     context.runOnUiThread(new Runnable() {
