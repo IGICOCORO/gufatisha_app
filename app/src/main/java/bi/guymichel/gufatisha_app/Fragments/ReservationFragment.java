@@ -1,6 +1,7 @@
 package bi.guymichel.gufatisha_app.Fragments;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -35,16 +36,17 @@ import okhttp3.Response;
 
 
 public class ReservationFragment extends Fragment {
-    private static ArrayList<Reservation> reservations;
+    private static ArrayList<Reservation> reservations =  new ArrayList<>();;
     private static AdapterBooking adapter;
     RecyclerView orderlist;
-    Button btn_order_cancel;
     private Reservation reservation;
+    private Context context;
 
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_reservation, container, false);
         orderlist = view.findViewById(R.id.orderlist);
@@ -96,6 +98,10 @@ public class ReservationFragment extends Fragment {
                         Log.i("====JSON=======", String.valueOf(json_obj));
                         reservations.add(reservation);
                     }
+                    getActivity().runOnUiThread(() -> {
+                       adapter.setReservations(reservations);
+                       adapter.notifyDataSetChanged();
+                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(getActivity(),"Une exception de chargement",Toast.LENGTH_SHORT).show();

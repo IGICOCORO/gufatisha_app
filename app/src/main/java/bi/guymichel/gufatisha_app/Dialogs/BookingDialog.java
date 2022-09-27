@@ -148,7 +148,7 @@ public class BookingDialog extends AppCompatDialogFragment {
             +"},"
             +"\"date_arrivee\": \""+date_debut+"\","
             +"\"date_depart\": \""+date_fin+"\","
-            +"\"chambre\": \""+room.numero.toString()+"\""
+            +"\"chambre\": \""+ room.numero +"\""
         +"}";
         RequestBody body = RequestBody.create(json_reservation, MediaType.parse("application/json; charset=utf-8"));
 
