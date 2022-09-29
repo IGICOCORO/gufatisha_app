@@ -40,7 +40,6 @@ public class ReservationFragment extends Fragment {
     private static AdapterBooking adapter;
     RecyclerView orderlist;
     private Reservation reservation;
-    private Context context;
 
 
     @Override
@@ -115,6 +114,7 @@ public class ReservationFragment extends Fragment {
     }
 
     public void delete(int position) {
+        reservation = reservations.get(position);
         OkHttpClient client = new OkHttpClient();
         HttpUrl.Builder urlBuilder = HttpUrl.parse(Host.URL + "/Reservation/"+reservation.id+"/").newBuilder();
 

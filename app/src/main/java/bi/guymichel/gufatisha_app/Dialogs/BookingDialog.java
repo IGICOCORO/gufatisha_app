@@ -138,17 +138,17 @@ public class BookingDialog extends AppCompatDialogFragment {
         String phone = field_phone.getText().toString();
         String provenance = field_provenance.getText().toString();
 
-        String json_reservation = "{"+
+        String json_reservation = "\"{"+
             "\"client\": {"+
                     "\"nom\": \""+firstname+"\","
                     + "\"prenom\": \""+lastname+"\","
                     + "\"provenance\": \""+provenance+"\","
-                    + "\"phone\": "+"\""+phone+"\","
-                    + "\"email\": \""+email+"\""
+                    + "\"phone\": \""+"\""+phone+"\","
+                    + "\"email\": \""+email+"\","
             +"},"
             +"\"date_arrivee\": \""+date_debut+"\","
             +"\"date_depart\": \""+date_fin+"\","
-            +"\"chambre\": \""+ room.id +"\""
+            +"\"chambre\": \""+ room.numero +"\""
         +"}";
         RequestBody body = RequestBody.create(json_reservation, MediaType.parse("application/json; charset=utf-8"));
 
@@ -175,17 +175,15 @@ public class BookingDialog extends AppCompatDialogFragment {
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 String json = response.body().string();
-                Log.i("==== POST RES ====", json_reservation);
-                Log.i("==== POST RES ====", json);
                 try {
                     JSONObject json_obj = new JSONObject(json);
                     final Reservation res = new Reservation(
                             json_obj.getString("id"),
-                            room.numero,
-                            firstname+" "+lastname,
-                            date_debut,
-                            date_fin,
-                            room.prix
+                            json_obj.getString("date_arrivee"),
+                            json_obj.getString("date_depart"),
+                            json_obj.getString("client"),
+                            json_obj.getString("prix_chambre"),
+                            json_obj.getString("numero_chambre")
                     );
                     context.runOnUiThread(new Runnable() {
                         @Override
@@ -198,7 +196,7 @@ public class BookingDialog extends AppCompatDialogFragment {
                     context.runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(context, e.getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(context, "Ajout échoué", Toast.LENGTH_SHORT).show();
                         }
                     });
                 }
