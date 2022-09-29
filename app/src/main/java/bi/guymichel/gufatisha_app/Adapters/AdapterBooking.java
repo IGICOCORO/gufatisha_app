@@ -42,8 +42,8 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
         Reservation reservation = reservations.get(position);
         holder.chambre_number.setText(reservation.numero_chambre);
         holder.nom_client.setText(reservation.client);
-        holder.date_checkin.setText(Host.getStrDate(reservation.date_arrivee));
-        holder.date_checkout.setText(Host.getStrDate(reservation.date_depart));
+        holder.date_checkin.setText(reservation.date_arrivee);
+        holder.date_checkout.setText(reservation.date_depart);
         holder.price_chambre.setText(reservation.prix_chambre);
         holder.view.setOnClickListener(view -> {
             fragment.delete(position);
