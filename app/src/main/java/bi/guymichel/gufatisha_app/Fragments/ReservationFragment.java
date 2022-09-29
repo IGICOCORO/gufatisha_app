@@ -94,8 +94,6 @@ public class ReservationFragment extends Fragment {
                                 json_obj.getString("date_depart"),
                                 json_object_chambre.getString("prix")
                         );
-
-                        Log.i("====JSON=======", String.valueOf(json_obj));
                         reservations.add(reservation);
                     }
                     getActivity().runOnUiThread(() -> {

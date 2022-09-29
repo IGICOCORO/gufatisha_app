@@ -86,9 +86,14 @@ public class HotelListFragment extends Fragment {
                             }
                             hotels.add(hotel);
                         }
+                        getActivity().runOnUiThread(() -> {
+                            adapter.notifyDataSetChanged();
+                        });
                     } catch (JSONException e) {
                         e.printStackTrace();
-                        //Toast.makeText(getActivity(),"Une exception de chargement",Toast.LENGTH_SHORT).show();
+                        getActivity().runOnUiThread(() -> {
+                            Toast.makeText(getActivity(),e.getMessage(), Toast.LENGTH_SHORT).show();
+                        });
                     }
 
                 }
