@@ -90,6 +90,7 @@ public class RoomActivity extends AppCompatActivity {
                     for (int i=0; i<results.length(); i++) {
                         JSONObject item = results.getJSONObject(i);
                         room = new Room(
+                                item.getString("id"),
                                 item.getString("numero"),
                                 item.getString("nbre_personnes"),
                                 item.getString("prix"),
@@ -103,6 +104,9 @@ public class RoomActivity extends AppCompatActivity {
                         Log.i("======CHAMBRE========", "RESPONSE CHAMBRE");
                             rooms.add(room);
                     }
+                    RoomActivity.this.runOnUiThread(() -> {
+                        adapter.notifyDataSetChanged();
+                    });
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }

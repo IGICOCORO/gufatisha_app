@@ -1,8 +1,9 @@
 package bi.guymichel.gufatisha_app.Models;
 
 public class Room {
-    public String numero,nbres_personnes,type_chambre,prix,pic1,pic2,pic3,hotel;
-    public Room(String numero, String nbres_personnes, String prix, String pic1, String pic2, String pic3, String hotel, String type_chambre) {
+    public String id, numero, nbres_personnes,type_chambre,prix,pic1,pic2,pic3,hotel;
+    public Room(String id, String numero, String nbres_personnes, String prix, String pic1, String pic2, String pic3, String hotel, String type_chambre) {
+        this.id = id;
         this.numero = numero;
         this.nbres_personnes = nbres_personnes;
         this.type_chambre = type_chambre;
