@@ -4,6 +4,7 @@ package bi.guymichel.gufatisha_app.Adapters;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,7 +46,7 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
         holder.date_checkin.setText(reservation.date_arrivee);
         holder.date_checkout.setText(reservation.date_depart);
         holder.price_chambre.setText(reservation.prix_chambre);
-        holder.view.setOnClickListener(view -> {
+        holder.btn_order_cancel.setOnClickListener(view -> {
             fragment.delete(position);
         });
     }
@@ -63,6 +64,7 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
     public static class ViewHolder extends RecyclerView.ViewHolder {
         View view;
         TextView chambre_number,nom_client,date_checkin,date_checkout,price_chambre;
+        Button btn_order_cancel;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             chambre_number = itemView.findViewById(R.id.chambre_number);
@@ -70,6 +72,7 @@ public class AdapterBooking extends RecyclerView.Adapter<AdapterBooking.ViewHold
             date_checkin = itemView.findViewById(R.id.date_checkin);
             date_checkout = itemView.findViewById(R.id.date_checkout);
             price_chambre = itemView.findViewById(R.id.price_chambre);
+            btn_order_cancel = itemView.findViewById(R.id.btn_order_cancel);
             view = itemView;
         }
     }

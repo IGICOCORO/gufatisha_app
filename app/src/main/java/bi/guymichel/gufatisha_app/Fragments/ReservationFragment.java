@@ -86,7 +86,7 @@ public class ReservationFragment extends Fragment {
                         JSONObject json_obj_client = json_obj.getJSONObject("client");
                         JSONObject json_object_chambre = json_obj.getJSONObject("chambre");
                         Reservation reservation = new Reservation(
-                                json_object_chambre.getString("id"),
+                                json_obj.getString("id"),
                                 json_object_chambre.getString("numero"),
                                 json_obj_client.getString("nom") + json_obj_client.getString("prenom") ,
                                 json_obj.getString("date_arrivee"),
@@ -137,23 +137,19 @@ public class ReservationFragment extends Fragment {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                String json = response.body().string();
-                if (!json.trim().isEmpty()){
+                if(response.isSuccessful()){
                     getActivity().runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
-                            Toast.makeText(getActivity(), "Suppression échouée", Toast.LENGTH_SHORT).show();
+                            reservations.remove(position);
+                            adapter.notifyItemRemoved(position);
                         }
                     });
-                    return;
+                } else {
+                    getActivity().runOnUiThread(() -> {
+                        Toast.makeText(getActivity(), "Erreur lors de la suppression", Toast.LENGTH_SHORT).show();
+                    });
                 }
-                getActivity().runOnUiThread(new Runnable() {
-                    @Override
-                    public void run() {
-                        reservations.remove(position);
-                        adapter.notifyItemRemoved(position);
-                    }
-                });
             }
         });
     }
