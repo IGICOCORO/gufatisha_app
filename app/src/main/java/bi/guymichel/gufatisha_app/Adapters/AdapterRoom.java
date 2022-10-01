@@ -46,6 +46,7 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
         holder.price_number.setText(room.prix);
         holder.room_type.setText(room.type_chambre);
         holder.nbr_person.setText(room.nbres_personnes);
+        holder.room_values.setText(context.values);
         Glide.with(this.context).load(room.pic1).into(holder.image_item);
         holder.view.setOnClickListener(v ->{
             context.setRoom(room);
@@ -61,7 +62,7 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
     public static class ViewHolder extends RecyclerView.ViewHolder {
         View view;
         ImageView image_item;
-        TextView room_number,price_number,room_type,nbr_person;
+        TextView room_number,price_number,room_type,nbr_person, room_values;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             image_item = itemView.findViewById(R.id.image_item);
@@ -69,6 +70,7 @@ public class AdapterRoom extends RecyclerView.Adapter<AdapterRoom.ViewHolder> {
             price_number = itemView.findViewById(R.id.price_number);
             room_type = itemView.findViewById(R.id.room_type);
             nbr_person = itemView.findViewById(R.id.nbr_person);
+            room_values = itemView.findViewById(R.id.room_values);
             view = itemView;
         }
     }

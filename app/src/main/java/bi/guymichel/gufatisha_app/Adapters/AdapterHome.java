@@ -42,15 +42,21 @@ public class AdapterHome extends RecyclerView.Adapter<AdapterHome.ViewHolder> {
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Hotel hotel = hotels.get(position);
+    public void onBindViewHolder(@NonNull ViewHolder holder, int position) { Hotel hotel = hotels.get(position);
        holder.nom_hotel.setText(hotel.nom_hotel);
         Glide.with(this.context).load(hotel.image).into(holder.card_image);
         holder.card_image.setOnClickListener(v -> {
-          Intent intent = new Intent(this.context, RoomActivity.class);
-          intent.putExtra("hotel", hotel.id);
-            Log.i("======IHOTERI=====", String.valueOf(hotel.id));
-          this.context.startActivity(intent);
+            String values = "";
+            for (String value:hotel.valeur) {
+                values += value +", ";
+            }
+            if(values.length() > 3){
+                values = values.substring(0, values.length()-2);
+            }
+            Intent intent = new Intent(this.context, RoomActivity.class);
+            intent.putExtra("hotel", hotel.id);
+            intent.putExtra("values", values);
+            this.context.startActivity(intent);
         });
         if(hotel.valeur.contains("wifi")){
             holder.ic_wifi.setVisibility(View.VISIBLE);

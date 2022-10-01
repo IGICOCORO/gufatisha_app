@@ -37,6 +37,7 @@ public class RoomActivity extends AppCompatActivity {
     ImageButton btn_booking;
     private ArrayList<Room> rooms = new ArrayList<>();
     private int hotel_id ;
+    public String values;
     private ImageView image_room;
     private Room room;
 
@@ -52,6 +53,7 @@ public class RoomActivity extends AppCompatActivity {
         image_room = findViewById(R.id.image_room);
         btn_booking.setOnClickListener(v -> openDialog());
         hotel_id = getIntent().getIntExtra("hotel",-1);
+        values = getIntent().getStringExtra("values");
         extractrooms();
 
     }
