@@ -2,7 +2,7 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="130dp"
+    android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_margin="5dp"
     android:elevation="20dp"
@@ -12,9 +12,9 @@
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
-        android:padding="14dp">
+        android:layout_margin="5dp">
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:orientation="horizontal">
@@ -32,14 +32,17 @@
 
             <TextView
                 android:id="@+id/nom_client"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="80dp"
-                android:text=" NDUWIMANA Guy-Michel " />
+                android:layout_marginLeft="10dp"
+                android:textAlignment="textEnd"
+                android:text=" NDUWIMANA Guy-Michel "
+                android:gravity="end"
+                android:lines="1"/>
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
@@ -53,12 +56,12 @@
                 android:layout_height="match_parent"
                 android:textSize="7pt"
                 android:text="07/06/2021"
-                android:layout_width="wrap_content" />
+                android:layout_width="wrap_content"
+                android:layout_weight="1"/>
             <TextView
                 android:id="@+id/date_checkout_label"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="50pt"
                 android:text="Au : "/>
             <TextView
                 android:id="@+id/date_checkout"
@@ -69,7 +72,7 @@
 
         </LinearLayout>
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
             android:orientation="horizontal">
@@ -92,31 +95,16 @@
                 android:textSize="20dp"
                 android:textColor="#6A90B5"
                 android:layout_height="wrap_content"
-                android:text="Fbu" />
-            <RelativeLayout
+                android:text="Fbu"
+                android:layout_weight="1"/>
+            <Button
+                android:id="@+id/btn_order_cancel"
+                style="@style/Widget.AppCompat.Button.Borderless.Colored"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content">
-
-            </RelativeLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <Button
-                        android:id="@+id/btn_order_cancel"
-                        style="@style/Widget.AppCompat.Button.Borderless.Colored"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentRight="true"
-                        android:padding="0dp"
-                        android:text="Annuler"
-                        android:textColor="#f00" />
-                </RelativeLayout>
-            </LinearLayout>
+                android:layout_height="30dp"
+                android:padding="0dp"
+                android:text="Annuler"
+                android:textColor="#f00" />
         </LinearLayout>
     </LinearLayout>
 

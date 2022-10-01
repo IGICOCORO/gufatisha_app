@@ -7,7 +7,7 @@ import java.util.TimeZone;
 
 
 public class Host {
-    public static String URL = "http://192.168.110.218:8000";
+    public static String URL = "http://192.168.43.135:8000";
 
 
     public static Date getDate(String str_date) {
