@@ -5,23 +5,31 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".RoomActivity">
-
     <ImageView
         android:id="@+id/image_room"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:src="@drawable/room"
         android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:id="@+id/image_room_2"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:src="@drawable/room"
+        android:scaleType="centerCrop"/>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginTop="170dp">
+        android:layout_marginTop="200dp"
+        android:background="#efff">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/roomlist"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
+            android:padding="5dp"
             app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
             tools:listitem="@layout/card_room" />
     </ScrollView>

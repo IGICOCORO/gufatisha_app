@@ -38,7 +38,7 @@ public class RoomActivity extends AppCompatActivity {
     private ArrayList<Room> rooms = new ArrayList<>();
     private int hotel_id ;
     public String values;
-    private ImageView image_room;
+    private ImageView image_room, image_room_2;
     private Room room;
 
 
@@ -51,6 +51,7 @@ public class RoomActivity extends AppCompatActivity {
         roomlist.setAdapter(adapter);
         btn_booking = findViewById(R.id.btn_booking);
         image_room = findViewById(R.id.image_room);
+        image_room_2 = findViewById(R.id.image_room_2);
         btn_booking.setOnClickListener(v -> openDialog());
         hotel_id = getIntent().getIntExtra("hotel",-1);
         values = getIntent().getStringExtra("values");
@@ -123,5 +124,6 @@ public class RoomActivity extends AppCompatActivity {
             this.btn_booking.setVisibility(View.VISIBLE);
         }
         Glide.with(this).load(room.pic1).into(image_room);
+        Glide.with(this).load(room.pic1).into(image_room_2);
     }
 }
